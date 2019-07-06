@@ -18,7 +18,14 @@ namespace DojoSurveyModel.Controllers
         [HttpPost("create")]
         public IActionResult Submission(Survey person)
         {
-            return View("Success", person);
+            if(ModelState.IsValid)
+            {
+                return View("Success", person);
+            }
+            else
+            {
+                return View("Index");
+            }
         }
         // [HttpGet("result")]
         // public ViewResult Success()
